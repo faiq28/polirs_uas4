@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "846947166017",
+    "project_id": "polirs-ca503",
+    "storage_bucket": "polirs-ca503.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:846947166017:android:0c2fdc4453278cefb2e3c0",
+        "android_client_info": {
+          "package_name": "com.smkmq"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAnwm1vaLctj_jkFeno57ntrA6-eSYHexU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
