@@ -13,14 +13,15 @@ class LoginView extends GetView<LoginController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.lightBlueAccent,
+      backgroundColor: Color.fromARGB(255, 206, 227, 253),
       body: Stack(
         children: [
           Positioned(
             top: 30,
             left: 16,
             child: IconButton(
-              icon: const Icon(Icons.close, color: Colors.white),
+              icon: const Icon(Icons.arrow_back,
+                  color: Color.fromARGB(255, 109, 131, 255)),
               onPressed: () => Get.back(),
             ),
           ),
@@ -30,12 +31,10 @@ class LoginView extends GetView<LoginController> {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  const Icon(Icons.bloodtype, size: 50, color: Colors.white),
-                  const SizedBox(height: 20),
                   const Text(
                     'LOGIN',
                     style: TextStyle(
-                      color: Colors.white,
+                      color: Color.fromARGB(255, 109, 131, 255),
                       fontSize: 24,
                       fontWeight: FontWeight.bold,
                     ),
@@ -43,33 +42,37 @@ class LoginView extends GetView<LoginController> {
                   const SizedBox(height: 20),
                   Container(
                     decoration: BoxDecoration(
-                      border: Border.all(color: Colors.white),
-                      borderRadius: BorderRadius.circular(10),
-                    ),
+                        border: Border.all(
+                            color: Color.fromARGB(255, 109, 131, 255)),
+                        borderRadius: BorderRadius.circular(10),
+                        color: Colors.white),
                     child: TextField(
                       controller: controller.emailC,
                       decoration: const InputDecoration(
                         labelText: 'Email',
-                        labelStyle: TextStyle(color: Colors.white),
+                        labelStyle: TextStyle(
+                            color: Color.fromARGB(255, 109, 131, 255)),
                         border: InputBorder.none,
                         contentPadding: EdgeInsets.all(8.0),
                       ),
-                      style: const TextStyle(color: Colors.white),
+                      style: const TextStyle(color: Colors.black),
                     ),
                   ),
                   const SizedBox(height: 10),
                   Obx(() {
                     return Container(
                       decoration: BoxDecoration(
-                        border: Border.all(color: Colors.white),
-                        borderRadius: BorderRadius.circular(10),
-                      ),
+                          border: Border.all(
+                              color: Color.fromARGB(255, 109, 131, 255)),
+                          borderRadius: BorderRadius.circular(10),
+                          color: Colors.white),
                       child: TextField(
                         controller: controller.passwordC,
                         obscureText: controller.isObscure.value,
                         decoration: InputDecoration(
                           labelText: 'Password',
-                          labelStyle: const TextStyle(color: Colors.white),
+                          labelStyle: const TextStyle(
+                              color: Color.fromARGB(255, 109, 131, 255)),
                           border: InputBorder.none,
                           contentPadding: const EdgeInsets.all(8.0),
                           suffixIcon: IconButton(
@@ -77,22 +80,24 @@ class LoginView extends GetView<LoginController> {
                                 controller.isObscure.value
                                     ? Icons.visibility_off
                                     : Icons.visibility,
-                                color: Colors.white,
+                                color: Color.fromARGB(255, 109, 131, 255),
                               ),
                               onPressed: () => controller.obscureFunc()),
                         ),
-                        style: const TextStyle(color: Colors.white),
+                        style: const TextStyle(color: Colors.black),
                       ),
                     );
                   }),
-                  const SizedBox(height: 20),
+                  const SizedBox(height: 50),
                   Obx(() {
                     return c.isLoading.value
-                        ? const CircularProgressIndicator(color: Colors.white)
+                        ? const CircularProgressIndicator(
+                            color: Color.fromARGB(255, 109, 131, 255),
+                          )
                         : ElevatedButton(
                             style: ElevatedButton.styleFrom(
-                              // primary: Colors.white,
-                              // onPrimary: Colors.pinkAccent,
+                              backgroundColor: Color.fromARGB(
+                                  255, 109, 131, 255), // Warna latar belakang
                               padding: const EdgeInsets.symmetric(
                                 horizontal: 50,
                                 vertical: 15,
@@ -102,7 +107,13 @@ class LoginView extends GetView<LoginController> {
                               controller.emailC.text,
                               controller.passwordC.text,
                             ),
-                            child: const Text('LOGIN'),
+                            child: const Text(
+                              'LOGIN',
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontWeight: FontWeight.w700,
+                              ),
+                            ),
                           );
                   }),
                 ],

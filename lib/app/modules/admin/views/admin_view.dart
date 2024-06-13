@@ -12,14 +12,14 @@ class AdminView extends GetView<AdminController> {
   Widget build(BuildContext context) {
     final circularMenu = CircularMenu(
       items: [
-        CircularMenuItem(
-          badgeLabel: 'Home',
-          icon: Icons.home,
-          onTap: () {
-            // callback for home
-            print('Home tapped');
-          },
-        ),
+        // CircularMenuItem(
+        //   badgeLabel: 'Home',
+        //   icon: Icons.home,
+        //   onTap: () {
+        //     // callback for home
+        //     print('Home tapped');
+        //   },
+        // ),
         CircularMenuItem(
           badgeLabel: 'Open Scanner',
           icon: Icons.qr_code_scanner_outlined,
@@ -39,7 +39,7 @@ class AdminView extends GetView<AdminController> {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Polikan Admin Dashboard'),
+        title: const Text('POLI RS BPJS KECAMATAN'),
         actions: [
           IconButton(
             icon: const Icon(Icons.notifications),
@@ -57,37 +57,37 @@ class AdminView extends GetView<AdminController> {
           crossAxisSpacing: 10,
           mainAxisSpacing: 10,
           children: [
-            _buildDashboardCard(
-              icon: Icons.people,
-              title: 'Patients',
-              subtitle: 'Manage Patients',
-              color: Colors.blue,
-              onTap: () {
-                print('Patients tapped');
-                // Navigate to Patients Management
-              },
-            ),
-            _buildDashboardCard(
+            // _Card(
+            //   icon: Icons.people,
+            //   title: 'Pasien',
+            //   subtitle: 'Data Pasien',
+            //   color: Colors.blue,
+            //   onTap: () {
+            //     print('Pasien dipencet');
+            //     // Navigate to Pasien Management
+            //   },
+            // ),
+            _Card(
               icon: Icons.calendar_today,
-              title: 'Appointments',
-              subtitle: 'View Appointments',
+              title: 'Jadwal ',
+              subtitle: 'Lihat Jadwal Dokter',
               color: Colors.green,
               onTap: () {
                 print('Appointments tapped');
                 // Navigate to Appointments
               },
             ),
-            _buildDashboardCard(
-              icon: Icons.show_chart,
-              title: 'Statistics',
-              subtitle: 'View Statistics',
-              color: Colors.orange,
-              onTap: () {
-                print('Statistics tapped');
-                // Navigate to Statistics
-              },
-            ),
-            _buildDashboardCard(
+            // _Card(
+            //   icon: Icons.show_chart,
+            //   title: 'Statistics',
+            //   subtitle: 'View Statistics',
+            //   color: Colors.orange,
+            //   onTap: () {
+            //     print('Statistics tapped');
+            //     // Navigate to Statistics
+            //   },
+            // ),
+            _Card(
               icon: Icons.add_chart_outlined,
               title: 'Tambah Data',
               subtitle: 'Buat Jadwal Poli',
@@ -105,7 +105,7 @@ class AdminView extends GetView<AdminController> {
     );
   }
 
-  Widget _buildDashboardCard({
+  Widget _Card({
     required IconData icon,
     required String title,
     required String subtitle,

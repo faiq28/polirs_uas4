@@ -1,4 +1,4 @@
-// ignore_for_file: file_names, prefer_const_constructors, prefer_const_literals_to_create_immutables, avoid_unnecessary_containers, sized_box_for_whitespace, deprecated_member_use
+// ignore_for_file: file_names, prefer_const_constructors, prefer_const_literals_to_create_immutables, avoid_unnecessary_containers, sized_box_for_blackspace, deprecated_member_use
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -15,7 +15,7 @@ class RegisterView extends GetView<RegisterController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.pinkAccent,
+      backgroundColor: Color.fromARGB(255, 206, 227, 253),
       body: Stack(
         children: [
           Padding(
@@ -23,64 +23,67 @@ class RegisterView extends GetView<RegisterController> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                const SizedBox(height: 40),
-                const Icon(Icons.bloodtype, size: 50, color: Colors.white),
-                const SizedBox(height: 20),
                 const Text(
                   'REGISTER',
                   style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 24,
-                    fontWeight: FontWeight.bold,
-                  ),
+                      color: Color.fromARGB(255, 109, 131, 255),
+                      fontSize: 24,
+                      fontWeight: FontWeight.bold),
                 ),
-                const SizedBox(height: 20),
+                const SizedBox(height: 50),
                 Container(
                   decoration: BoxDecoration(
-                    border: Border.all(color: Colors.white),
-                    borderRadius: BorderRadius.circular(10),
-                  ),
+                      border:
+                          Border.all(color: Color.fromARGB(255, 109, 131, 255)),
+                      borderRadius: BorderRadius.circular(10),
+                      color: Colors.white),
                   child: TextField(
                     controller: controller.userNameController,
                     decoration: const InputDecoration(
                       labelText: 'Username',
-                      labelStyle: TextStyle(color: Colors.white),
+                      labelStyle:
+                          TextStyle(color: Color.fromARGB(255, 109, 131, 255)),
                       border: InputBorder.none,
                       contentPadding: EdgeInsets.all(8.0),
                     ),
-                    style: const TextStyle(color: Colors.white),
+                    style: const TextStyle(color: Colors.black),
                   ),
                 ),
                 const SizedBox(height: 10),
                 Container(
                   decoration: BoxDecoration(
-                    border: Border.all(color: Colors.white),
-                    borderRadius: BorderRadius.circular(10),
-                  ),
+                      border:
+                          Border.all(color: Color.fromARGB(255, 109, 131, 255)),
+                      borderRadius: BorderRadius.circular(10),
+                      color: Colors.white),
                   child: TextField(
                     controller: controller.emailController,
                     decoration: const InputDecoration(
                       labelText: 'Email',
-                      labelStyle: TextStyle(color: Colors.white),
+                      labelStyle: TextStyle(
+                        color: Color.fromARGB(255, 109, 131, 255),
+                      ),
                       border: InputBorder.none,
                       contentPadding: EdgeInsets.all(8.0),
                     ),
-                    style: const TextStyle(color: Colors.white),
+                    style: const TextStyle(color: Colors.black),
                   ),
                 ),
                 const SizedBox(height: 10),
                 Container(
                   decoration: BoxDecoration(
-                    border: Border.all(color: Colors.white),
-                    borderRadius: BorderRadius.circular(10),
-                  ),
+                      border:
+                          Border.all(color: Color.fromARGB(255, 109, 131, 255)),
+                      borderRadius: BorderRadius.circular(10),
+                      color: Colors.white),
                   child: Obx(() {
                     return TextField(
                       controller: controller.passwordController,
                       obscureText: controller.isObscure.value,
                       decoration: InputDecoration(
                         labelText: 'Password',
-                        labelStyle: const TextStyle(color: Colors.white),
+                        labelStyle: const TextStyle(
+                            color: Color.fromARGB(255, 109, 131, 255)),
                         border: InputBorder.none,
                         contentPadding: const EdgeInsets.all(8.0),
                         suffixIcon: IconButton(
@@ -88,30 +91,30 @@ class RegisterView extends GetView<RegisterController> {
                             controller.isObscure.value
                                 ? Icons.visibility_off
                                 : Icons.visibility,
-                            color: Colors.white,
+                            color: Color.fromARGB(255, 109, 131, 255),
                           ),
                           onPressed: () => controller.obscureFunc(),
                         ),
                       ),
-                      style: const TextStyle(color: Colors.white),
+                      style: const TextStyle(color: Colors.black),
                     );
                   }),
                 ),
-                const SizedBox(height: 10),
+                const SizedBox(height: 15),
                 Obx(() => Row(
                       children: [
                         const Expanded(
                           child: Text(
                             'Admin Access',
                             style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                            ),
+                                fontWeight: FontWeight.bold,
+                                color: Color.fromARGB(255, 109, 131, 255)),
                           ),
                         ),
-                        Switch(
+                        Checkbox(
                           value: isAdmin.value,
                           onChanged: (value) {
-                            isAdmin.value = value;
+                            isAdmin.value = value!;
                           },
                         ),
                       ],
@@ -120,12 +123,15 @@ class RegisterView extends GetView<RegisterController> {
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 17),
                   child: Obx(() => ElevatedButton(
-                        style: const ButtonStyle(
-                          padding:
-                              MaterialStatePropertyAll(EdgeInsets.symmetric(
-                            vertical: 9,
-                            horizontal: 18,
-                          )),
+                        style: ButtonStyle(
+                          backgroundColor: MaterialStatePropertyAll<Color>(
+                              Color.fromARGB(255, 109, 131, 255)),
+                          padding: MaterialStatePropertyAll<EdgeInsets>(
+                            EdgeInsets.symmetric(
+                              vertical: 10,
+                              horizontal: 50,
+                            ),
+                          ),
                         ),
                         onPressed: () async {
                           c.isLoading.isTrue
@@ -144,8 +150,14 @@ class RegisterView extends GetView<RegisterController> {
                               )
                             : Text(
                                 'Sign Up',
+                                style: TextStyle(
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.w700),
                               ),
                       )),
+                ),
+                SizedBox(
+                  height: 15,
                 ),
                 TextButton(
                   onPressed: () {
@@ -153,7 +165,8 @@ class RegisterView extends GetView<RegisterController> {
                   },
                   child: Text(
                     "sudah punya akun?",
-                    style: TextStyle(color: Colors.white),
+                    style: TextStyle(
+                        color: Colors.black, fontWeight: FontWeight.w700),
                   ),
                 ),
               ],
@@ -163,7 +176,7 @@ class RegisterView extends GetView<RegisterController> {
             top: 16,
             left: 16,
             child: IconButton(
-              icon: const Icon(Icons.close, color: Colors.white),
+              icon: const Icon(Icons.close, color: Colors.black),
               onPressed: () => Get.back(),
             ),
           ),

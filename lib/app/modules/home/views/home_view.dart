@@ -20,12 +20,19 @@ class HomeView extends GetView<HomeController> {
       body: SingleChildScrollView(
         child: Column(
           children: <Widget>[
+            // Container(
+            //   height: 40,
+            //   width: ,
+            // ),
             Container(
               width: size.width,
               padding: const EdgeInsets.all(20),
               decoration: const BoxDecoration(
                 gradient: LinearGradient(
-                  colors: [Color(0xFF7B61FF), Colors.blue],
+                  colors: [
+                    Color.fromARGB(255, 109, 131, 255),
+                    Color.fromARGB(255, 186, 217, 255)
+                  ],
                   begin: Alignment.topLeft,
                   end: Alignment.bottomRight,
                 ),
@@ -36,44 +43,36 @@ class HomeView extends GetView<HomeController> {
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
-                      const SizedBox(height: 50),
-                      const Text(
-                        'Halo,',
-                        style: TextStyle(
-                          fontSize: 24,
-                          color: Colors.white,
-                        ),
-                      ),
-                      const Text(
-                        'irana',
-                        style: TextStyle(
-                          fontSize: 24,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.white,
-                        ),
+                      const SizedBox(height: 20),
+                      Row(
+                        children: [
+                          const Text(
+                            'Halo, ',
+                            style: TextStyle(
+                              fontSize: 24,
+                              color: Colors.white,
+                            ),
+                          ),
+                          const Text(
+                            'Jocelyn',
+                            style: TextStyle(
+                              fontSize: 24,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.white,
+                            ),
+                          ),
+                        ],
                       ),
                       const SizedBox(height: 10),
                       const Text(
-                        'Semoga Anda lekas sembuh',
+                        'Tetap semangat dan sehat selalu!',
                         style: TextStyle(
                           fontSize: 16,
                           color: Colors.white,
                         ),
                       ),
                       const SizedBox(height: 20),
-                      Container(
-                        padding: const EdgeInsets.symmetric(
-                            horizontal: 20, vertical: 1),
-                        decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(30),
-                        ),
-                      ),
                     ],
-                  ),
-                  Image.asset(
-                    'images/doctorhome.png',
-                    height: 100,
                   ),
                 ],
               ),
@@ -91,7 +90,7 @@ class HomeView extends GetView<HomeController> {
                         Icon(
                           Icons.receipt_long,
                           size: 50,
-                          color: Colors.purple,
+                          color: Color.fromARGB(255, 109, 131, 255),
                         ),
                         SizedBox(height: 10),
                         Text(
@@ -99,7 +98,7 @@ class HomeView extends GetView<HomeController> {
                           textAlign: TextAlign.center,
                           style: TextStyle(
                             fontSize: 16,
-                            color: Colors.purple,
+                            color: Color.fromARGB(255, 109, 131, 255),
                           ),
                         ),
                       ],
@@ -113,7 +112,7 @@ class HomeView extends GetView<HomeController> {
                         Icon(
                           Icons.local_hospital,
                           size: 50,
-                          color: Colors.purple,
+                          color: Color.fromARGB(255, 109, 131, 255),
                         ),
                         SizedBox(height: 10),
                         Text(
@@ -121,7 +120,7 @@ class HomeView extends GetView<HomeController> {
                           textAlign: TextAlign.center,
                           style: TextStyle(
                             fontSize: 16,
-                            color: Colors.purple,
+                            color: Color.fromARGB(255, 109, 131, 255),
                           ),
                         ),
                       ],
@@ -135,7 +134,7 @@ class HomeView extends GetView<HomeController> {
                         Icon(
                           Icons.person,
                           size: 50,
-                          color: Colors.purple,
+                          color: Color.fromARGB(255, 109, 131, 255),
                         ),
                         SizedBox(height: 10),
                         Text(
@@ -143,7 +142,7 @@ class HomeView extends GetView<HomeController> {
                           textAlign: TextAlign.center,
                           style: TextStyle(
                             fontSize: 16,
-                            color: Colors.purple,
+                            color: Color.fromARGB(255, 109, 131, 255),
                           ),
                         ),
                       ],
