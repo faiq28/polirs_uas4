@@ -1,23 +1,13 @@
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class LoginController extends GetxController {
-  //TODO: Implement LoginController
+  TextEditingController emailC = TextEditingController();
+  TextEditingController passwordC = TextEditingController();
+  
+  RxBool isObscure = true.obs;
 
-  final count = 0.obs;
-  @override
-  void onInit() {
-    super.onInit();
+  obscureFunc() {
+    isObscure.value = !isObscure.value;
   }
-
-  @override
-  void onReady() {
-    super.onReady();
-  }
-
-  @override
-  void onClose() {
-    super.onClose();
-  }
-
-  void increment() => count.value++;
 }
