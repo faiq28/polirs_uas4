@@ -1,51 +1,54 @@
 import 'package:circular_menu/circular_menu.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:polirs_uas4/app/controllers/auth_controller.dart';
 import 'package:polirs_uas4/app/routes/app_pages.dart';
 
 import '../controllers/admin_controller.dart';
 
 class AdminView extends GetView<AdminController> {
-  const AdminView({super.key});
+  AdminView({super.key});
+
+  final c = Get.put(AuthController());
 
   @override
   Widget build(BuildContext context) {
-    final circularMenu = CircularMenu(
-      items: [
-        CircularMenuItem(
-          badgeLabel: 'Home',
-          icon: Icons.home,
-          onTap: () {
-            // callback for home
-            print('Home tapped');
-          },
-        ),
-        CircularMenuItem(
-          badgeLabel: 'Open Scanner',
-          icon: Icons.qr_code_scanner_outlined,
-          onTap: () {
-            controller.openScanner();
-          },
-        ),
-        CircularMenuItem(
-          badgeLabel: 'Open PDF',
-          icon: Icons.edit_document,
-          onTap: () {
-            // controller.bookingPdf();
-          },
-        ),
-      ],
-    );
+    // final circularMenu = CircularMenu(
+    //   items: [
+    //     CircularMenuItem(
+    //       badgeLabel: 'Home',
+    //       icon: Icons.home,
+    //       onTap: () {
+    //         // callback for home
+    //         print('Home tapped');
+    //       },
+    //     ),
+    //     CircularMenuItem(
+    //       badgeLabel: 'Open Scanner',
+    //       icon: Icons.qr_code_scanner_outlined,
+    //       onTap: () {
+    //         controller.openScanner();
+    //       },
+    //     ),
+    //     CircularMenuItem(
+    //       badgeLabel: 'Open PDF',
+    //       icon: Icons.edit_document,
+    //       onTap: () {
+    //         // controller.bookingPdf();
+    //       },
+    //     ),
+    //   ],
+    // );
 
     return Scaffold(
       appBar: AppBar(
         title: const Text('POLI RS BPJS KECAMATAN'),
         actions: [
           IconButton(
-            icon: const Icon(Icons.notifications),
+            icon: const Icon(Icons.logout),
             onPressed: () {
               // Handle notifications
-              print('Notifications tapped');
+              c.logOut();
             },
           ),
         ],
@@ -71,7 +74,7 @@ class AdminView extends GetView<AdminController> {
               icon: Icons.calendar_today,
               title: 'Jadwal ',
               subtitle: 'Lihat Jadwal Dokter',
-              color: Colors.green,
+              color: Color.fromARGB(255, 109, 131, 255),
               onTap: () {
                 print('Appointments tapped');
                 // Navigate to Appointments
@@ -91,7 +94,7 @@ class AdminView extends GetView<AdminController> {
               icon: Icons.add_chart_outlined,
               title: 'Tambah Data',
               subtitle: 'Buat Jadwal Poli',
-              color: Colors.red,
+              color: Color.fromARGB(255, 109, 131, 255),
               onTap: () {
                 print('Tambah Data tapped');
                 Get.toNamed(Routes.TAMBAH_POLI);
@@ -101,7 +104,7 @@ class AdminView extends GetView<AdminController> {
               icon: Icons.qr_code_scanner_outlined,
               title: 'QR',
               subtitle: 'Scan Tiket Poli',
-              color: Colors.blue,
+              color: Color.fromARGB(255, 109, 131, 255),
               onTap: () {
                 print('SCAN QR TAPPED');
                 controller.openScanner();
@@ -110,8 +113,8 @@ class AdminView extends GetView<AdminController> {
           ],
         ),
       ),
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-      floatingActionButton: circularMenu,
+      // floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+      // floatingActionButton: circularMenu,
     );
   }
 

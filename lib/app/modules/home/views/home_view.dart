@@ -27,10 +27,11 @@ class HomeView extends GetView<HomeController> {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text('POLI RS BPJS KECAMATAN',style: TextStyle(
-                      fontSize: 24,
-                      fontWeight: FontWeight.w500
-                    ),),
+                    Text(
+                      'POLI RS BPJS KECAMATAN',
+                      style:
+                          TextStyle(fontSize: 24, fontWeight: FontWeight.w500),
+                    ),
                     InkWell(
                       onTap: () => Get.toNamed(Routes.PROFILE),
                       child: const Column(
@@ -103,7 +104,7 @@ class HomeView extends GetView<HomeController> {
             ),
             SizedBox(height: 16),
             SizedBox(
-              height: size.height * 0.4,
+              height: size.height * 0.6,
               child: Column(
                 children: <Widget>[
                   InkWell(
@@ -129,11 +130,11 @@ class HomeView extends GetView<HomeController> {
                         // mainAxisAlignment: MainAxisAlignment.center,
                         children: const <Widget>[
                           Icon(
-                            Icons.receipt_long,
+                            Icons.list_alt_rounded,
                             size: 50,
                             color: Color.fromARGB(255, 109, 131, 255),
                           ),
-                          SizedBox(height: 10),
+                          SizedBox(width: 10),
                           Text(
                             'Tentang Penyakit',
                             textAlign: TextAlign.center,
@@ -169,11 +170,11 @@ class HomeView extends GetView<HomeController> {
                         // mainAxisAlignment: MainAxisAlignment.center,
                         children: const <Widget>[
                           Icon(
-                            Icons.local_hospital,
+                            Icons.local_hospital_rounded,
                             size: 50,
                             color: Color.fromARGB(255, 109, 131, 255),
                           ),
-                          SizedBox(height: 10),
+                          SizedBox(width: 10),
                           Text(
                             'Poli',
                             textAlign: TextAlign.center,
@@ -213,9 +214,49 @@ class HomeView extends GetView<HomeController> {
                             size: 50,
                             color: Color.fromARGB(255, 109, 131, 255),
                           ),
-                          SizedBox(height: 10),
+                          SizedBox(width: 10),
                           Text(
-                            'Tiket Poli',
+                            'Tiket Booking Poli',
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                              fontSize: 16,
+                              color: Color.fromARGB(255, 109, 131, 255),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                  InkWell(
+                    onTap: () => Get.toNamed(Routes.HISTORI_BOOKING),
+                    child: Container(
+                      width: size.width,
+                      margin: const EdgeInsets.symmetric(
+                          vertical: 10, horizontal: 20),
+                      padding: const EdgeInsets.all(20),
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(20),
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.grey.withOpacity(0.3),
+                            spreadRadius: 3,
+                            blurRadius: 5,
+                            offset: Offset(0, 3),
+                          ),
+                        ],
+                      ),
+                      child: Row(
+                        // mainAxisAlignment: MainAxisAlignment.center,
+                        children: const <Widget>[
+                          Icon(
+                            Icons.history_rounded,
+                            size: 50,
+                            color: Color.fromARGB(255, 109, 131, 255),
+                          ),
+                          SizedBox(width: 10),
+                          Text(
+                            'History Tiket Booking',
                             textAlign: TextAlign.center,
                             style: TextStyle(
                               fontSize: 16,
@@ -229,7 +270,7 @@ class HomeView extends GetView<HomeController> {
                 ],
               ),
             ),
-            // 
+            //
           ],
         ),
       ),

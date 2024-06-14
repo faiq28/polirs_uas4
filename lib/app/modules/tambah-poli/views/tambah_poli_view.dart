@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 
 import '../controllers/tambah_poli_controller.dart';
@@ -9,7 +10,7 @@ class TambahPoliView extends GetView<TambahPoliController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.blue.shade200,
+      backgroundColor: Colors.white,
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.all(16.0),
@@ -21,7 +22,7 @@ class TambahPoliView extends GetView<TambahPoliController> {
                 children: [
                   IconButton(
                     onPressed: () => Get.back(),
-                    icon: const Icon(Icons.arrow_back_ios_new),
+                    icon: const Icon(Icons.arrow_back),
                   ),
                   const Text(
                     'Tambah Jadwal Poli',
@@ -54,8 +55,6 @@ class _TambahPoliFormState extends State<TambahPoliForm> {
   final controller = Get.put(TambahPoliController());
   final _formKey = GlobalKey<FormState>();
 
-
-
   _selectDate(BuildContext context) async {
     final DateTime? picked = await showDatePicker(
       context: context,
@@ -79,7 +78,7 @@ class _TambahPoliFormState extends State<TambahPoliForm> {
           padding: const EdgeInsets.all(15),
           decoration: BoxDecoration(
             borderRadius: const BorderRadius.all(Radius.circular(30)),
-            color: Colors.grey.shade200,
+            color: Color.fromARGB(255, 206, 227, 253),
           ),
           child: Column(
             children: <Widget>[

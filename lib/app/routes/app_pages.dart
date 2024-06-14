@@ -1,5 +1,10 @@
 import 'package:get/get.dart';
 
+import 'package:polirs_uas4/app/modules/histori-booking/bindings/histori_booking_binding.dart';
+import 'package:polirs_uas4/app/modules/histori-booking/views/histori_booking_view.dart';
+import 'package:polirs_uas4/app/modules/poli_admin/bindings/poli_admin_binding.dart';
+import 'package:polirs_uas4/app/modules/poli_admin/views/poli_admin_view.dart';
+
 import '../modules/admin/bindings/admin_binding.dart';
 import '../modules/admin/views/admin_view.dart';
 import '../modules/artikel/bindings/artikel_binding.dart';
@@ -48,7 +53,7 @@ class AppPages {
     ),
     GetPage(
       name: _Paths.ADMIN,
-      page: () => const AdminView(),
+      page: () => AdminView(),
       binding: AdminBinding(),
     ),
     GetPage(
@@ -85,6 +90,16 @@ class AppPages {
       name: _Paths.BOOKINGAN,
       page: () => const BookinganView(),
       binding: BookinganBinding(),
+    ),
+    GetPage(
+      name: _Paths.HISTORI_BOOKING,
+      page: () => HistoriBookingView(),
+      binding: HistoriBookingBinding(),
+    ),
+    GetPage(
+      name: _Paths.POLI_ADMIN,
+      page: () => PoliAdminView(),
+      binding: PoliAdminBinding(),
     ),
   ];
 }

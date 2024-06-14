@@ -14,6 +14,20 @@ class DetailPoliUserController extends GetxController {
       FirebaseFirestore.instance.collection('booking');
 
   bookingJadwal(JadwalPoli poli) async {
+    // Check if any field is empty
+    if (namaController.text.isEmpty ||
+        alamatController.text.isEmpty ||
+        noteleponController.text.isEmpty) {
+      Get.snackbar(
+        "Data Incomplete",
+        "Harap isi data diri",
+        snackPosition: SnackPosition.BOTTOM,
+        backgroundColor: Colors.red,
+        colorText: Colors.white,
+      );
+      return; // Stop execution if any field is empty
+    }
+
     Map<String, dynamic> bookingData = {
       "namaDokter": poli.namaDokter,
       "codePoli": poli.codePoli,

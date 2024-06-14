@@ -5,7 +5,6 @@ import 'package:polirs_uas4/app/modules/home/controllers/home_controller.dart';
 import 'package:polirs_uas4/app/routes/app_pages.dart';
 import 'package:qr_flutter/qr_flutter.dart';
 
-
 import '../../detail-poli-user/model/booking_model.dart';
 
 class BookinganView extends GetView<HomeController> {
@@ -54,7 +53,7 @@ class BookinganView extends GetView<HomeController> {
 
             Container(
               width: size.width,
-              height: size.height * 0.6,
+              height: size.height * 2,
               // decoration: BoxDecoration(
               //   color: Colors.grey[300],
               //   borderRadius: const BorderRadius.only(
@@ -94,18 +93,17 @@ class BookinganView extends GetView<HomeController> {
                         child: Container(
                           padding: const EdgeInsets.all(20),
                           margin: const EdgeInsets.only(bottom: 20),
-                          
                           decoration: BoxDecoration(
                             color: Colors.white,
                             // color: Colors.grey.shade200,
                             boxShadow: [
-                          BoxShadow(
-                            color: Colors.grey.withOpacity(0.3),
-                            spreadRadius: 3,
-                            blurRadius: 5,
-                            offset: Offset(0, 3),
-                          ),
-                        ],
+                              BoxShadow(
+                                color: Colors.grey.withOpacity(0.3),
+                                spreadRadius: 3,
+                                blurRadius: 5,
+                                offset: Offset(0, 3),
+                              ),
+                            ],
                             borderRadius: BorderRadius.circular(20),
                           ),
                           child: Row(
@@ -150,7 +148,8 @@ class BookinganView extends GetView<HomeController> {
                                   const SizedBox(height: 12),
                                   Text(
                                     'Klik untuk mendapatkan QR CODE',
-                                    style: const TextStyle(fontSize: 12,color: Colors.blue),
+                                    style: const TextStyle(
+                                        fontSize: 12, color: Colors.blue),
                                   ),
                                 ],
                               ),
@@ -229,7 +228,7 @@ void _showDetailDialog(BuildContext context, Booking data) {
               const SizedBox(height: 16),
               Center(
                 child: Text(
-                  'Jangan Sebarluaskan Barcode Ini',
+                  'QR ini hanya bisa 1x scan',
                   style: TextStyle(fontSize: 12, color: Colors.grey.shade500),
                 ),
               ),

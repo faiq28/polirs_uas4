@@ -7,4 +7,8 @@ class HomeController extends GetxController {
   Stream<QuerySnapshot<Map<String, dynamic>>> streamBooking() async* {
     yield* firestore.collection('booking').snapshots();
   }
+
+  Stream<QuerySnapshot<Map<String, dynamic>>> streamSelesai() async* {
+    yield* firestore.collection('selesai').snapshots();
+  }
 }

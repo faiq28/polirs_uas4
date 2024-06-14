@@ -14,6 +14,8 @@ abstract class Routes {
   static const DETAIL_POLI_USER = _Paths.DETAIL_POLI_USER;
   static const PASIEN = _Paths.PASIEN;
   static const BOOKINGAN = _Paths.BOOKINGAN;
+  static const HISTORI_BOOKING = _Paths.HISTORI_BOOKING;
+  static const POLI_ADMIN = _Paths.POLI_ADMIN;
 }
 
 abstract class _Paths {
@@ -29,4 +31,6 @@ abstract class _Paths {
   static const DETAIL_POLI_USER = '/detail-poli-user';
   static const PASIEN = '/pasien';
   static const BOOKINGAN = '/bookingan';
+  static const HISTORI_BOOKING = '/histori-booking';
+  static const POLI_ADMIN = '/poli-admin';
 }

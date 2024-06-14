@@ -13,7 +13,7 @@ class LoginView extends GetView<LoginController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color.fromARGB(255, 206, 227, 253),
+      backgroundColor: Color.fromARGB(255, 232, 242, 255),
       body: Stack(
         children: [
           Positioned(

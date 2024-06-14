@@ -11,7 +11,10 @@ class ArtikelView extends GetView<ArtikelController> {
     var lebar = MediaQuery.of(context).size.width;
     return Scaffold(
       appBar: AppBar(
-        title: const Text('ArtikelView'),
+        title: const Text(
+          'Tentang Penyakit',
+          style: TextStyle(fontWeight: FontWeight.bold),
+        ),
         centerTitle: true,
       ),
       body: ListView(

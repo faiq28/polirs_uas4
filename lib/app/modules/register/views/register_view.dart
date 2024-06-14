@@ -15,7 +15,7 @@ class RegisterView extends GetView<RegisterController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color.fromARGB(255, 206, 227, 253),
+      backgroundColor: Color.fromARGB(255, 232, 242, 255),
       body: Stack(
         children: [
           Padding(
@@ -116,6 +116,10 @@ class RegisterView extends GetView<RegisterController> {
                           onChanged: (value) {
                             isAdmin.value = value!;
                           },
+                          activeColor: Color.fromARGB(255, 109, 131,
+                              255), // Ganti dengan warna yang diinginkan
+                          checkColor: Colors
+                              .white, // Ganti dengan warna yang diinginkan
                         ),
                       ],
                     )),
