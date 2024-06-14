@@ -12,14 +12,14 @@ class AdminView extends GetView<AdminController> {
   Widget build(BuildContext context) {
     final circularMenu = CircularMenu(
       items: [
-        // CircularMenuItem(
-        //   badgeLabel: 'Home',
-        //   icon: Icons.home,
-        //   onTap: () {
-        //     // callback for home
-        //     print('Home tapped');
-        //   },
-        // ),
+        CircularMenuItem(
+          badgeLabel: 'Home',
+          icon: Icons.home,
+          onTap: () {
+            // callback for home
+            print('Home tapped');
+          },
+        ),
         CircularMenuItem(
           badgeLabel: 'Open Scanner',
           icon: Icons.qr_code_scanner_outlined,
@@ -95,6 +95,16 @@ class AdminView extends GetView<AdminController> {
               onTap: () {
                 print('Tambah Data tapped');
                 Get.toNamed(Routes.TAMBAH_POLI);
+              },
+            ),
+            _Card(
+              icon: Icons.qr_code_scanner_outlined,
+              title: 'QR',
+              subtitle: 'Scan Tiket Poli',
+              color: Colors.blue,
+              onTap: () {
+                print('SCAN QR TAPPED');
+                controller.openScanner();
               },
             ),
           ],

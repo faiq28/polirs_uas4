@@ -13,16 +13,22 @@ class DetailPoliUserView extends GetView<DetailPoliUserController> {
     var poli = Get.arguments as JadwalPoli;
 
     return Scaffold(
-      backgroundColor: Colors.grey.shade200,
+      backgroundColor: Colors.grey.shade200, // Same as PoliUserView
       body: Center(
         child: Padding(
-          padding: const EdgeInsets.all(10.0),
+          padding: const EdgeInsets.all(20.0),
           child: Container(
-            decoration: const BoxDecoration(
-              borderRadius: BorderRadius.only(
-                  topLeft: Radius.circular(35),
-                  bottomRight: Radius.circular(35)),
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(20), // Round all corners
               color: Colors.white,
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.grey.withOpacity(0.3),
+                  spreadRadius: 3,
+                  blurRadius: 5,
+                  offset: const Offset(0, 3),
+                ),
+              ],
             ),
             padding: const EdgeInsets.all(20),
             child: SingleChildScrollView(
@@ -62,18 +68,22 @@ class DetailPoliUserView extends GetView<DetailPoliUserController> {
                     style: const TextStyle(fontSize: 18),
                   ),
                   const SizedBox(height: 32),
-                  TextButton(
-                      onPressed: () {
-                        controller.isOpen.value = !controller.isOpen.value;
-                      },
-                      child: const Text('Isi data Anda')),
-                  Obx(() => controller.isOpen.value ? isiForm() : Container()),
+                  const Text(
+                    'Harap isi data diri anda apa bila ingin booking poli untuk hari ini',
+                    style: TextStyle(
+                      fontSize: 12,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.red,
+                    ),
+                  ),
+                  // const SizedBox(height: 6),
+                  isiForm(),
                   const SizedBox(height: 32),
                   Center(
                     child: ElevatedButton(
                       style: ElevatedButton.styleFrom(
                         padding: const EdgeInsets.symmetric(
-                          horizontal: 50,
+                          horizontal: 130,
                           vertical: 15,
                         ),
                         backgroundColor: Colors.blue,
@@ -115,8 +125,16 @@ Widget isiForm() {
   return Container(
     padding: const EdgeInsets.all(10),
     decoration: BoxDecoration(
-      color: Colors.grey.shade100,
-      borderRadius: const BorderRadius.all(Radius.circular(20)),
+      color: Colors.white,
+      borderRadius: BorderRadius.circular(20), // Round all corners
+      // boxShadow: [
+      //   BoxShadow(
+      //     color: Colors.grey.withOpacity(0.3),
+      //     spreadRadius: 3,
+      //     blurRadius: 5,
+      //     offset: const Offset(0, 3),
+      //   ),
+      // ],
     ),
     child: Column(
       children: [
@@ -148,9 +166,9 @@ Widget _buildTextField({
       controller: controller,
       decoration: InputDecoration(
         labelText: label,
-        border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(50.0),
-        ),
+        // border: OutlineInputBorder(
+        //   borderRadius: BorderRadius.circular(50.0),
+        // ),
       ),
       validator: (value) {
         if (value == null || value.isEmpty) {

@@ -42,7 +42,7 @@ class ArtikelView extends GetView<ArtikelController> {
                         const Text(
                           'Terdapat beberapa sakit umum yang di alami\nmasyarakat di indonesia ',
                           style: TextStyle(
-                            fontSize: 24,
+                            fontSize: 22,
                             color: Colors.white,
                           ),
                         ),
@@ -52,7 +52,7 @@ class ArtikelView extends GetView<ArtikelController> {
                         const Text(
                           'Jadi kalian sebagai masyarakat indonesia patut untuk berjaga jaga\nagar tidak terkena penyakit',
                           style: TextStyle(
-                            fontSize: 16,
+                            fontSize: 14,
                             color: Colors.white,
                           ),
                         ),

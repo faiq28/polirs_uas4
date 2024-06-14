@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:polirs_uas4/app/data/model/jadwalpolimodel.dart';
+import 'package:polirs_uas4/app/routes/app_pages.dart';
 
 class DetailPoliUserController extends GetxController {
   RxBool isOpen = false.obs;
@@ -36,6 +37,7 @@ class DetailPoliUserController extends GetxController {
         backgroundColor: Colors.green,
         colorText: Colors.white,
       );
+      Get.offAllNamed(Routes.HOME);
     } catch (e) {
       Get.snackbar(
         "Booking Failed",

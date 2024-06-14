@@ -13,7 +13,7 @@ class PoliUserView extends GetView<PoliUserController> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Pilihan Jadwal Poliklinik'),
+        title: const Text('Jadwal Poli Hari Ini'),
         centerTitle: true,
       ),
       body: StreamBuilder<QuerySnapshot<Map<String, dynamic>>>(
@@ -43,101 +43,111 @@ class PoliUserView extends GetView<PoliUserController> {
             itemBuilder: (context, index) {
               JadwalPoli poli = allPoli[index];
               return Padding(
-                padding: const EdgeInsets.only(
-                    bottom: 20), // Adjust the spacing as needed
-
-                child: Dismissible(
-                  key: Key(poli.codePoli.toString()),
-                  confirmDismiss: (direction) {
-                    return Get.defaultDialog(
-                      title: 'Delete Jadwal',
-                      middleText: 'Apakah Kamu Yakin Delete Jadwal',
-                      actions: [
-                        OutlinedButton(
-                          onPressed: () => Get.back(),
-                          child: const Text('No'),
-                        ),
-                        ElevatedButton(
-                          onPressed: () {
-                            controller.deletePoli(poli.codePoli);
-                            Get.back();
-                          },
-                          child: Obx(
-                            () => controller.status.isFalse
-                                ? const Text('Delete')
-                                : Container(
-                                    padding: const EdgeInsets.all(2),
-                                    width: 15,
-                                    height: 15,
-                                    child: const CircularProgressIndicator(
-                                      strokeWidth: 1,
-                                    ),
-                                  ),
-                          ),
-                        )
-                      ],
-                    );
-                  },
-                  child: InkWell(
-                    onTap: () => Get.toNamed(
-                      Routes.DETAIL_POLI_USER,
-                      arguments: poli,
-                    ),
-                    child: Container(
-                      padding: const EdgeInsets.all(20),
-                      decoration: BoxDecoration(
-                        color: Colors.grey.shade200,
-                        borderRadius: const BorderRadius.only(
-                            topLeft: Radius.circular(30),
-                            bottomRight: Radius.circular(30)),
-                      ),
-                      child: Row(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Container(
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(
-                                  'Nama Dokter: ${poli.namaDokter}',
-                                  style: const TextStyle(
-                                    fontSize: 16,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                ),
-                                const SizedBox(height: 8),
-                                Text(
-                                  'Spesialis: ${poli.spesialis}',
-                                  style: const TextStyle(fontSize: 14),
-                                ),
-                                const SizedBox(height: 8),
-                                Text(
-                                  'Jam Praktek: ${_formatTimestamp(poli.jamPraktek)}',
-                                  style: const TextStyle(fontSize: 14),
-                                ),
-                                const SizedBox(height: 8),
-                                Text(
-                                  'Lokasi: ${poli.lokasi}',
-                                  style: const TextStyle(fontSize: 14),
-                                ),
-                                const SizedBox(height: 8),
-                                Text(
-                                  'Kontak: ${poli.kontak}',
-                                  style: const TextStyle(fontSize: 14),
-                                ),
-                                const SizedBox(height: 8),
-                                Text(
-                                  'Informasi Tambahan: ${poli.informasiTambahan}',
-                                  style: const TextStyle(fontSize: 14),
-                                ),
-                              ],
+                padding: const EdgeInsets.only(bottom: 20),
+                child: Column(
+                  children: [
+                    const SizedBox(height: 20), // Adjust the height as needed
+                    Dismissible(
+                      key: Key(poli.codePoli.toString()),
+                      confirmDismiss: (direction) {
+                        return Get.defaultDialog(
+                          title: 'Delete Jadwal',
+                          middleText: 'Apakah Kamu Yakin Delete Jadwal',
+                          actions: [
+                            OutlinedButton(
+                              onPressed: () => Get.back(),
+                              child: const Text('No'),
                             ),
+                            ElevatedButton(
+                              onPressed: () {
+                                controller.deletePoli(poli.codePoli);
+                                Get.back();
+                              },
+                              child: Obx(
+                                () => controller.status.isFalse
+                                    ? const Text('Delete')
+                                    : Container(
+                                        padding: const EdgeInsets.all(2),
+                                        width: 15,
+                                        height: 15,
+                                        child: const CircularProgressIndicator(
+                                          strokeWidth: 1,
+                                        ),
+                                      ),
+                              ),
+                            )
+                          ],
+                        );
+                      },
+                      child: InkWell(
+                        onTap: () => Get.toNamed(
+                          Routes.DETAIL_POLI_USER,
+                          arguments: poli,
+                        ),
+                        child: Container(
+                          padding: const EdgeInsets.all(20),
+                          margin: const EdgeInsets.symmetric(horizontal: 20),
+                          decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(20),
+                            boxShadow: [
+                              BoxShadow(
+                                color: Colors.grey.withOpacity(0.3),
+                                spreadRadius: 3,
+                                blurRadius: 5,
+                                offset: Offset(0, 3),
+                              ),
+                            ],
                           ),
-                        ],
+                          child: Row(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Expanded(
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                      'Nama Dokter: ${poli.namaDokter}',
+                                      style: const TextStyle(
+                                        fontSize: 16,
+                                        fontWeight: FontWeight.bold,
+                                      ),
+                                    ),
+                                    const SizedBox(height: 8),
+                                    Text(
+                                      'Spesialis: ${poli.spesialis}',
+                                      style: const TextStyle(fontSize: 14),
+                                    ),
+                                    const SizedBox(height: 8),
+                                    Text(
+                                      'Jam Praktek: ${_formatTimestamp(poli.jamPraktek)}',
+                                      style: const TextStyle(fontSize: 14),
+                                    ),
+                                    const SizedBox(height: 8),
+                                    Text(
+                                      'Lokasi: ${poli.lokasi}',
+                                      style: const TextStyle(fontSize: 14),
+                                    ),
+                                    const SizedBox(height: 8),
+                                    Text(
+                                      'Kontak: ${poli.kontak}',
+                                      style: const TextStyle(fontSize: 14),
+                                    ),
+                                    const SizedBox(height: 8),
+                                    Text(
+                                      'Informasi Tambahan: ${poli.informasiTambahan}',
+                                      style: const TextStyle(fontSize: 14),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
                       ),
                     ),
-                  ),
+                  ],
                 ),
               );
             },

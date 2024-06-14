@@ -4,6 +4,8 @@ import '../modules/admin/bindings/admin_binding.dart';
 import '../modules/admin/views/admin_view.dart';
 import '../modules/artikel/bindings/artikel_binding.dart';
 import '../modules/artikel/views/artikel_view.dart';
+import '../modules/bookingan/bindings/bookingan_binding.dart';
+import '../modules/bookingan/views/bookingan_view.dart';
 import '../modules/detail-poli-user/bindings/detail_poli_user_binding.dart';
 import '../modules/detail-poli-user/views/detail_poli_user_view.dart';
 import '../modules/home/bindings/home_binding.dart';
@@ -78,6 +80,11 @@ class AppPages {
       name: _Paths.PASIEN,
       page: () => const PasienView(),
       binding: PasienBinding(),
+    ),
+    GetPage(
+      name: _Paths.BOOKINGAN,
+      page: () => const BookinganView(),
+      binding: BookinganBinding(),
     ),
   ];
 }

@@ -13,6 +13,7 @@ abstract class Routes {
   static const PROFILE = _Paths.PROFILE;
   static const DETAIL_POLI_USER = _Paths.DETAIL_POLI_USER;
   static const PASIEN = _Paths.PASIEN;
+  static const BOOKINGAN = _Paths.BOOKINGAN;
 }
 
 abstract class _Paths {
@@ -27,4 +28,5 @@ abstract class _Paths {
   static const PROFILE = '/profile';
   static const DETAIL_POLI_USER = '/detail-poli-user';
   static const PASIEN = '/pasien';
+  static const BOOKINGAN = '/bookingan';
 }
