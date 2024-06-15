@@ -10,7 +10,7 @@ class TambahPoliView extends GetView<TambahPoliController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: const Color.fromARGB(255, 255, 255, 255),
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.all(16.0),
@@ -78,7 +78,7 @@ class _TambahPoliFormState extends State<TambahPoliForm> {
           padding: const EdgeInsets.all(15),
           decoration: BoxDecoration(
             borderRadius: const BorderRadius.all(Radius.circular(30)),
-            color: Color.fromARGB(255, 206, 227, 253),
+            color: Color.fromARGB(255, 231, 231, 231),
           ),
           child: Column(
             children: <Widget>[
@@ -110,10 +110,17 @@ class _TambahPoliFormState extends State<TambahPoliForm> {
                     controller.tambahPoli();
                   }
                 },
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Color.fromARGB(
+                      255, 109, 131, 255), // Warna latar belakang
+                ),
                 child: Obx(
                   () => controller.isLoading.value
                       ? const CircularProgressIndicator()
-                      : const Text('Submit'),
+                      : const Text(
+                          'Submit',
+                          style: TextStyle(color: Colors.white),
+                        ),
                 ),
               ),
             ],

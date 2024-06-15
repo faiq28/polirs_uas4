@@ -79,6 +79,7 @@ class AdminView extends GetView<AdminController> {
               color: Color.fromARGB(255, 109, 131, 255),
               onTap: () {
                 print('Appointments tapped');
+                Get.toNamed(Routes.POLI_ADMIN);
                 // Navigate to Appointments
               },
             ),
@@ -136,6 +137,16 @@ class AdminView extends GetView<AdminController> {
                 print('SCAN QR TAPPED');
                 // controller.openScanner();
                 Get.toNamed(Routes.SCAN);
+              },
+            ),
+            _Card(
+              icon: Icons.content_paste,
+              title: 'Daftar Selesai',
+              subtitle: 'LIhat pasien yang Sudah ditangani',
+              color: Color.fromARGB(255, 109, 131, 255),
+              onTap: () {
+                print('Tambah Data tapped');
+                Get.toNamed(Routes.SELESAI_ADMIN);
               },
             ),
           ],

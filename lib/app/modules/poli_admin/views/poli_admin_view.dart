@@ -22,7 +22,7 @@ class PoliAdminView extends GetView<PoliAdminController> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Pilihan Jadwal Poliklinik'),
+        title: const Text('Jadwal Poliklinik Hari Ini'),
         centerTitle: true,
       ),
       body: StreamBuilder<QuerySnapshot<Map<String, dynamic>>>(
@@ -53,96 +53,126 @@ class PoliAdminView extends GetView<PoliAdminController> {
               JadwalPoli poli = allPoli[index];
               return Padding(
                 padding: const EdgeInsets.only(bottom: 20),
-                child: Dismissible(
-                  key: Key(poli.codePoli.toString()),
-                  confirmDismiss: (direction) {
-                    return Get.defaultDialog(
-                      title: 'Delete Jadwal',
-                      middleText: 'Apakah Kamu Yakin Delete Jadwal',
-                      actions: [
-                        OutlinedButton(
-                          onPressed: () => Get.back(),
-                          child: const Text('No'),
-                        ),
-                        ElevatedButton(
-                          onPressed: () {
-                            c.deletePoli(poli.codePoli);
-                            Get.back();
-                          },
-                          child: Obx(
-                            () => c.status.isFalse
-                                ? const Text('Delete')
-                                : Container(
-                                    padding: const EdgeInsets.all(2),
-                                    width: 15,
-                                    height: 15,
-                                    child: const CircularProgressIndicator(
-                                      strokeWidth: 1,
-                                    ),
-                                  ),
-                          ),
-                        )
-                      ],
-                    );
-                  },
-                  child: InkWell(
-                    onTap: () => Get.toNamed(
-                      Routes.DETAIL_POLI_USER,
-                      arguments: poli,
+                child: InkWell(
+                  child: Container(
+                    padding: const EdgeInsets.all(20),
+                    decoration: BoxDecoration(
+                      color: Color.fromARGB(255, 213, 222, 248),
+                      borderRadius: const BorderRadius.only(
+                          topLeft: Radius.circular(30),
+                          bottomRight: Radius.circular(30)),
                     ),
-                    child: Container(
-                      padding: const EdgeInsets.all(20),
-                      decoration: BoxDecoration(
-                        color: Colors.grey.shade200,
-                        borderRadius: const BorderRadius.only(
-                            topLeft: Radius.circular(30),
-                            bottomRight: Radius.circular(30)),
-                      ),
-                      child: Row(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Container(
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(
-                                  'Nama Dokter: ${poli.namaDokter}',
-                                  style: const TextStyle(
-                                    fontSize: 16,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                ),
-                                const SizedBox(height: 8),
-                                Text(
-                                  'Spesialis: ${poli.spesialis}',
-                                  style: const TextStyle(fontSize: 14),
-                                ),
-                                const SizedBox(height: 8),
-                                Text(
-                                  'Jam Praktek: ${_formatTimestamp(poli.jamPraktek)}',
-                                  style: const TextStyle(fontSize: 14),
-                                ),
-                                const SizedBox(height: 8),
-                                Text(
-                                  'Lokasi: ${poli.lokasi}',
-                                  style: const TextStyle(fontSize: 14),
-                                ),
-                                const SizedBox(height: 8),
-                                Text(
-                                  'Kontak: ${poli.kontak}',
-                                  style: const TextStyle(fontSize: 14),
-                                ),
-                                const SizedBox(height: 8),
-                                Text(
-                                  'Informasi Tambahan: ${poli.informasiTambahan}',
-                                  style: const TextStyle(fontSize: 14),
-                                ),
-                              ],
-                            ),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          'Nama Dokter: ${poli.namaDokter}',
+                          style: const TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.bold,
                           ),
-                        ],
-                      ),
+                        ),
+                        const SizedBox(height: 8),
+                        Text(
+                          'Spesialis: ${poli.spesialis}',
+                          style: const TextStyle(fontSize: 14),
+                        ),
+                        const SizedBox(height: 8),
+                        Text(
+                          'Jam Praktek: ${_formatTimestamp(poli.jamPraktek)}',
+                          style: const TextStyle(fontSize: 14),
+                        ),
+                        const SizedBox(height: 8),
+                        Text(
+                          'Lokasi: ${poli.lokasi}',
+                          style: const TextStyle(fontSize: 14),
+                        ),
+                        const SizedBox(height: 8),
+                        Text(
+                          'Kontak: ${poli.kontak}',
+                          style: const TextStyle(fontSize: 14),
+                        ),
+                        const SizedBox(height: 8),
+                        Text(
+                          'Informasi Tambahan: ${poli.informasiTambahan}',
+                          style: const TextStyle(fontSize: 14),
+                        ),
+                        const SizedBox(height: 16),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.end,
+                          children: [
+                            ElevatedButton(
+                              onPressed: () {
+                                Get.defaultDialog(
+                                  title: 'Delete Jadwal',
+                                  middleText: 'Apakah Kamu Yakin Delete Jadwal',
+                                  actions: [
+                                    OutlinedButton(
+                                      onPressed: () => Get.back(),
+                                      style: OutlinedButton.styleFrom(
+                                        side: BorderSide(
+                                            color: Colors
+                                                .green), // Mengatur warna border
+                                      ),
+                                      child: const Text(
+                                        'No',
+                                        style: TextStyle(color: Colors.green),
+                                      ),
+                                    ),
+                                    ElevatedButton(
+                                      onPressed: () {
+                                        c.deletePoli(poli.codePoli);
+                                        Get.back();
+                                      },
+                                      style: ElevatedButton.styleFrom(
+                                        backgroundColor: Colors
+                                            .red, // Mengatur warna background
+                                      ),
+                                      child: Obx(
+                                        () => c.status.isFalse
+                                            ? const Text(
+                                                'Delete',
+                                                style: TextStyle(
+                                                    color: Colors.white),
+                                              )
+                                            : Container(
+                                                padding:
+                                                    const EdgeInsets.all(2),
+                                                width: 15,
+                                                height: 15,
+                                                child:
+                                                    const CircularProgressIndicator(
+                                                  strokeWidth: 1,
+                                                ),
+                                              ),
+                                      ),
+                                    )
+                                  ],
+                                );
+                              },
+                              style: ElevatedButton.styleFrom(
+                                backgroundColor: Colors.red,
+                              ),
+                              child: const Text(
+                                'Delete',
+                                style: TextStyle(color: Colors.white),
+                              ),
+                            ),
+                            const SizedBox(width: 8),
+                            ElevatedButton(
+                              onPressed: () {},
+                              style: ElevatedButton.styleFrom(
+                                backgroundColor:
+                                    Colors.blue, // Warna tombol update
+                              ),
+                              child: const Text(
+                                'Update',
+                                style: TextStyle(color: Colors.white),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ],
                     ),
                   ),
                 ),

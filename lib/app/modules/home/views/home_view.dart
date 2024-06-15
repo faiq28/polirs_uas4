@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:polirs_uas4/app/modules/profile/controllers/profile_controller.dart';
 import 'package:polirs_uas4/app/routes/app_pages.dart';
 import 'package:qr_flutter/qr_flutter.dart';
 
@@ -29,8 +30,10 @@ class HomeView extends GetView<HomeController> {
                   children: [
                     Text(
                       'POLI RS BPJS KECAMATAN',
-                      style:
-                          TextStyle(fontSize: 24, fontWeight: FontWeight.w500),
+                      style: TextStyle(
+                          fontSize: 24,
+                          fontWeight: FontWeight.w500,
+                          color: Color.fromARGB(255, 109, 131, 255)),
                     ),
                     InkWell(
                       onTap: () => Get.toNamed(Routes.PROFILE),
@@ -78,14 +81,17 @@ class HomeView extends GetView<HomeController> {
                               color: Colors.white,
                             ),
                           ),
-                          const Text(
-                            'Jocelyn',
-                            style: TextStyle(
-                              fontSize: 24,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.white,
-                            ),
-                          ),
+                          Obx(() {
+                            final user = ProfileController().user.value;
+                            return Text(
+                              user?.email ?? '',
+                              style: const TextStyle(
+                                fontSize: 24,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.white,
+                              ),
+                            );
+                          }),
                         ],
                       ),
                       const SizedBox(height: 10),

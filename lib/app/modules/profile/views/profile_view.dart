@@ -2,11 +2,15 @@
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:polirs_uas4/app/controllers/auth_controller.dart';
 
 import '../controllers/profile_controller.dart';
 
 class ProfileView extends GetView<ProfileController> {
-  const ProfileView({super.key});
+  ProfileView({super.key});
+
+  final authController = Get.put(AuthController());
+  final profileController = Get.put(ProfileController());
 
   @override
   Widget build(BuildContext context) {
@@ -43,13 +47,16 @@ class ProfileView extends GetView<ProfileController> {
                   ),
                 ),
                 SizedBox(width: 16),
-                Text(
-                  '${controller.user?.displayName}',
-                  style: TextStyle(
+                Obx(() {
+                  final user = profileController.user.value;
+                  return Text(
+                    user?.displayName ?? 'User',
+                    style: const TextStyle(
                       color: Colors.white,
-                      fontSize: 24,
-                      fontWeight: FontWeight.w600),
-                ),
+                      fontSize: 20,
+                    ),
+                  );
+                }),
               ],
             ),
           ),
@@ -73,7 +80,10 @@ class ProfileView extends GetView<ProfileController> {
                   child: ListTile(
                     leading: Icon(Icons.email,
                         color: Color.fromARGB(255, 109, 131, 255)),
-                    title: Text('${controller.user?.email}'),
+                    title: Obx(() {
+                      final user = profileController.user.value;
+                      return Text(user?.email ?? 'Email');
+                    }),
                   ),
                 ),
                 Divider(
@@ -90,23 +100,20 @@ class ProfileView extends GetView<ProfileController> {
                 SizedBox(height: 20),
                 Center(
                   child: ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () => authController.logOut(),
                     style: ElevatedButton.styleFrom(
                       backgroundColor: Color.fromARGB(255, 109, 131, 255),
-                      padding:
-                          EdgeInsets.symmetric(horizontal: 50, vertical: 15),
-                      textStyle: TextStyle(
-                        fontSize: 16,
-                        color: Colors.white, // Menambahkan warna teks putih
-                      ),
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 50, vertical: 15),
+                      textStyle: const TextStyle(fontSize: 16),
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(30),
                       ),
                     ),
                     child: Text(
-                      'Edit profile',
+                      'Log Out',
                       style: TextStyle(
-                          color: Colors.white), // Menambahkan warna teks putih
+                          color: Colors.white),
                     ),
                   ),
                 ),

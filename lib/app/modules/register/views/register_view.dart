@@ -170,7 +170,8 @@ class RegisterView extends GetView<RegisterController> {
                   child: Text(
                     "sudah punya akun?",
                     style: TextStyle(
-                        color: Colors.black, fontWeight: FontWeight.w700),
+                      color: const Color.fromARGB(255, 87, 87, 87),
+                    ),
                   ),
                 ),
               ],

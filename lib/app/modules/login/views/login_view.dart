@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:polirs_uas4/app/controllers/auth_controller.dart';
 import 'package:polirs_uas4/app/modules/login/controllers/login_controller.dart';
+import 'package:polirs_uas4/app/routes/app_pages.dart';
 
 class LoginView extends GetView<LoginController> {
   LoginView({super.key});
@@ -116,6 +117,38 @@ class LoginView extends GetView<LoginController> {
                             ),
                           );
                   }),
+                  SizedBox(
+                    height: 32,
+                  ),
+                  Center(
+                      child: Text("Atau Login dengan",
+                          style: TextStyle(
+                            color: Color.fromRGBO(88, 88, 88, 1),
+                          ))),
+                  const SizedBox(height: 12),
+                  Center(
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        TextButton(
+                          onPressed: () => c.signInWithGoogle(),
+                          child: Image.asset(
+                            '/images/google.png',
+                            width: 50, // Sesuaikan ukuran ikon
+                            height: 50,
+                          ),
+                        ),
+                        const SizedBox(width: 12),
+                      ],
+                    ),
+                  ),
+                  TextButton(
+                      onPressed: () => Get.toNamed(Routes.REGISTER),
+                      child: const Text('Belum Punya Akun? Register',
+                          style: TextStyle(
+                            color: Color.fromARGB(255, 109, 131, 255),
+                          ))),
+                  const SizedBox(height: 10),
                 ],
               ),
             ),
