@@ -11,11 +11,11 @@ void main() async {
   // await Future.delayed(Duration(milliseconds: 500)); // Menambahkan delay
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
-);
+  );
   runApp(
     GetMaterialApp(
       debugShowCheckedModeBanner: false,
-      title: "Application",
+      title: "Poli RS BPJS",
       initialRoute: AppPages.INITIAL,
       getPages: AppPages.routes,
     ),

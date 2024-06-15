@@ -14,7 +14,7 @@ class JadwalPoli {
   Timestamp jamPraktek; // Changed to Timestamp
   String lokasi;
   String kontak;
-  String informasiTambahan;
+  // String informasiTambahan;
   
 
   JadwalPoli({
@@ -24,7 +24,7 @@ class JadwalPoli {
     required this.jamPraktek,
     required this.lokasi,
     required this.kontak,
-    required this.informasiTambahan,
+    // required this.informasiTambahan,
   });
 
   factory JadwalPoli.fromJson(Map<String, dynamic> json, String id) =>
@@ -36,7 +36,7 @@ class JadwalPoli {
             json["jamPraktek"] ?? Timestamp.now(), // Ensure Timestamp type
         lokasi: json["lokasi"] ?? '',
         kontak: json["kontak"] ?? '',
-        informasiTambahan: json["informasiTambahan"] ?? '',
+        // informasiTambahan: json["informasiTambahan"] ?? '',
       );
 
   Map<String, dynamic> toJson() => {
@@ -46,6 +46,6 @@ class JadwalPoli {
         "jamPraktek": jamPraktek,
         "lokasi": lokasi,
         "kontak": kontak,
-        "informasiTambahan": informasiTambahan,
+        // "informasiTambahan": informasiTambahan,
       };
 }

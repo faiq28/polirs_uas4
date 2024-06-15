@@ -15,7 +15,7 @@ class SelesaiAdminView extends GetView<SelesaiAdminController> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Daftar Selesai'),
+        title: const Text('Daftar Pasien Yang Sudah Selesai'),
         centerTitle: true,
       ),
       body: StreamBuilder<QuerySnapshot<Map<String, dynamic>>>(
@@ -49,16 +49,22 @@ class SelesaiAdminView extends GetView<SelesaiAdminController> {
                 child: Container(
                   padding: const EdgeInsets.all(20),
                   decoration: BoxDecoration(
-                    color: Colors.grey.shade200,
-                    borderRadius: const BorderRadius.only(
-                        topLeft: Radius.circular(30),
-                        bottomRight: Radius.circular(30)),
+                    color: Colors.white,
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.grey.withOpacity(0.3),
+                        spreadRadius: 3,
+                        blurRadius: 5,
+                        offset: Offset(0, 3),
+                      ),
+                    ],
+                    borderRadius: const BorderRadius.all(Radius.circular(30)),
                   ),
                   child: Row(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Column( 
+                      Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
@@ -76,9 +82,23 @@ class SelesaiAdminView extends GetView<SelesaiAdminController> {
                           const SizedBox(height: 8),
                           Text(
                             'Nama Pasien: ${data.nama}',
-                            style: const TextStyle(fontSize: 20),
+                            style: const TextStyle(fontSize: 14),
                           ),
                           const SizedBox(height: 8),
+                          Row(
+                            children: [
+                              Text(
+                                'Status: Success ',
+                                style: const TextStyle(fontSize: 14),
+                              ),
+                              const Icon(
+                                Icons.check_circle_outline,
+                                size: 20,
+                                color: Colors.green,
+                              ),
+                              const SizedBox(height: 8),
+                            ],
+                          ),
                         ],
                       ),
                       const SizedBox(height: 5),
@@ -92,11 +112,6 @@ class SelesaiAdminView extends GetView<SelesaiAdminController> {
                             ),
                           ),
                           const SizedBox(height: 15),
-                          const Icon(
-                            Icons.check_circle_outline,
-                            size: 30,
-                            color: Colors.green,
-                          )
                         ],
                       )
                     ],

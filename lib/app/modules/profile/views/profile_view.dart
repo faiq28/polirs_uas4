@@ -50,7 +50,7 @@ class ProfileView extends GetView<ProfileController> {
                 Obx(() {
                   final user = profileController.user.value;
                   return Text(
-                    user?.displayName ?? 'User',
+                    user?.displayName ?? '',
                     style: const TextStyle(
                       color: Colors.white,
                       fontSize: 20,
@@ -71,7 +71,8 @@ class ProfileView extends GetView<ProfileController> {
                         color: Color.fromARGB(255, 109, 131, 255)),
                     title: Obx(() {
                       final user = profileController.user.value;
-                      return Text(user?.phoneNumber ?? 'Anda belum mengisi nomor');
+                      return Text(
+                          user?.phoneNumber ?? 'Anda belum mengisi nomor');
                     }),
                   ),
                 ),
@@ -97,7 +98,9 @@ class ProfileView extends GetView<ProfileController> {
                   child: ListTile(
                     leading: Icon(Icons.lock,
                         color: Color.fromARGB(255, 109, 131, 255)),
-                    title: Text('Password anda bersifat privasi, Harap reset password jika anda lupa',style: TextStyle(
+                    title: Text(
+                        'Password anda bersifat privasi, Harap reset password jika anda lupa',
+                        style: TextStyle(
                           fontSize: 14,
                           color: Colors.red,
                         )),
@@ -108,7 +111,7 @@ class ProfileView extends GetView<ProfileController> {
                   child: ElevatedButton(
                     onPressed: () => authController.logOut(),
                     style: ElevatedButton.styleFrom(
-                      backgroundColor: Color.fromARGB(255, 109, 131, 255),
+                      backgroundColor: Colors.red,
                       padding: const EdgeInsets.symmetric(
                           horizontal: 50, vertical: 15),
                       textStyle: const TextStyle(fontSize: 16),
@@ -118,8 +121,7 @@ class ProfileView extends GetView<ProfileController> {
                     ),
                     child: Text(
                       'Log Out',
-                      style: TextStyle(
-                          color: Colors.white),
+                      style: TextStyle(color: Colors.white),
                     ),
                   ),
                 ),

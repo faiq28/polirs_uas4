@@ -107,15 +107,16 @@ class _TambahPoliFormState extends State<TambahPoliForm> {
                 controller: controller.kontakController,
                 label: 'Kontak',
               ),
-              _buildTextField(
-                controller: controller.informasiTambahanController,
-                label: 'Informasi Tambahan',
-              ),
+              // _buildTextField(
+              //   controller: controller.informasiTambahanController,
+              //   label: 'Informasi Tambahan',
+              // ),
               const SizedBox(height: 20),
               ElevatedButton(
                 onPressed: () {
                   if (_formKey.currentState?.validate() ?? false) {
                     controller.tambahPoli();
+                    // Get.back();
                   }
                 },
                 style: ElevatedButton.styleFrom(

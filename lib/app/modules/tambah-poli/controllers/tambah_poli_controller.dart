@@ -29,7 +29,7 @@ class TambahPoliController extends GetxController {
         jamPraktek: Timestamp.fromMicrosecondsSinceEpoch(selectedDate!.day),
         lokasi: lokasiController.text,
         kontak: kontakController.text,
-        informasiTambahan: informasiTambahanController.text,
+        // informasiTambahan: informasiTambahanController.text,
       );
 
       var hasil = await poliCollection.add(poliModel.toJson());

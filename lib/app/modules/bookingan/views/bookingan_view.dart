@@ -153,7 +153,6 @@ class BookinganView extends GetView<HomeController> {
                                   ),
                                 ],
                               ),
-                              
                             ],
                           ),
                         ),
@@ -192,12 +191,12 @@ void _showDetailDialog(BuildContext context, Booking data) {
             children: [
               Center(
                 child: SizedBox(
-                  height: 160,
-                  width: 160,
+                  height: 300,
+                  width: 300,
                   child: QrImageView(
                     data: data.codePoli.toString(),
                     version: QrVersions.auto,
-                    size: 200,
+                    size: 400,
                   ),
                 ),
               ),
@@ -205,7 +204,7 @@ void _showDetailDialog(BuildContext context, Booking data) {
               Center(
                 child: Text(
                   'QR ini hanya bisa 1x scan',
-                  style: TextStyle(fontSize: 12, color: Colors.grey.shade500),
+                  style: TextStyle(fontSize: 12, color: Colors.red),
                 ),
               ),
             ],

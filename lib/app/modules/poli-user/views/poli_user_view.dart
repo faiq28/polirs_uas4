@@ -134,11 +134,11 @@ class PoliUserView extends GetView<PoliUserController> {
                                       'Kontak: ${poli.kontak}',
                                       style: const TextStyle(fontSize: 14),
                                     ),
-                                    const SizedBox(height: 8),
-                                    Text(
-                                      'Informasi Tambahan: ${poli.informasiTambahan}',
-                                      style: const TextStyle(fontSize: 14),
-                                    ),
+                                    // const SizedBox(height: 8),
+                                    // Text(
+                                    //   'Informasi Tambahan: ${poli.informasiTambahan}',
+                                    //   style: const TextStyle(fontSize: 14),
+                                    // ),
                                   ],
                                 ),
                               ),
