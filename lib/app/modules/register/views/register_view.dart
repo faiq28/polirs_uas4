@@ -177,14 +177,14 @@ class RegisterView extends GetView<RegisterController> {
               ],
             ),
           ),
-          Positioned(
-            top: 16,
-            left: 16,
-            child: IconButton(
-              icon: const Icon(Icons.close, color: Colors.black),
-              onPressed: () => Get.back(),
-            ),
-          ),
+          // Positioned(
+          //   top: 16,
+          //   left: 16,
+          //   child: IconButton(
+          //     icon: const Icon(Icons.close, color: Colors.black),
+          //     onPressed: () => Get.back(),
+          //   ),
+          // ),
         ],
       ),
     );

@@ -153,31 +153,7 @@ class BookinganView extends GetView<HomeController> {
                                   ),
                                 ],
                               ),
-                              // Column(
-                              //   mainAxisAlignment:
-                              //       MainAxisAlignment.spaceBetween,
-                              //   children: [
-                              //     Container(
-                              //       height: 85,
-                              //       width: 85,
-                              //       decoration: BoxDecoration(
-                              //         color: Colors.grey.shade300,
-                              //         // borderRadius:
-                              //       ),
-                              //       child: const Center(
-                              //         child: Icon(Icons.timer),
-                              //       ),
-                              //     ),
-                              //     const SizedBox(height: 5),
-                              //     Text(
-                              //       _formatTimestamp(data.tanggalBooking),
-                              //       style: TextStyle(
-                              //         fontSize: 12,
-                              //         color: Colors.grey.shade700,
-                              //       ),
-                              //     ),
-                              //   ],
-                              // )
+                              
                             ],
                           ),
                         ),

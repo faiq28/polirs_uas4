@@ -9,14 +9,11 @@ import '../../detail-poli-user/model/booking_model.dart';
 import '../controllers/home_controller.dart';
 
 class HomeView extends GetView<HomeController> {
+  final profileController = Get.put(ProfileController());
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
     return Scaffold(
-      // appBar: AppBar(
-      //   title: const Text('HomeView'),
-      //   centerTitle: true,
-      // ),
       body: SingleChildScrollView(
         child: Column(
           children: <Widget>[
@@ -82,9 +79,9 @@ class HomeView extends GetView<HomeController> {
                             ),
                           ),
                           Obx(() {
-                            final user = ProfileController().user.value;
+                            final user = profileController.user.value;
                             return Text(
-                              user?.email ?? '',
+                              user?.displayName ?? '',
                               style: const TextStyle(
                                 fontSize: 24,
                                 fontWeight: FontWeight.bold,
@@ -96,7 +93,7 @@ class HomeView extends GetView<HomeController> {
                       ),
                       const SizedBox(height: 10),
                       const Text(
-                        'Tetap semangat dan sehat selalu!',
+                        'Selamat datang di poli RS BPJS Kecamatan',
                         style: TextStyle(
                           fontSize: 16,
                           color: Colors.white,

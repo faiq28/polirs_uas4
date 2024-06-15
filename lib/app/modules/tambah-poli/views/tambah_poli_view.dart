@@ -78,7 +78,15 @@ class _TambahPoliFormState extends State<TambahPoliForm> {
           padding: const EdgeInsets.all(15),
           decoration: BoxDecoration(
             borderRadius: const BorderRadius.all(Radius.circular(30)),
-            color: Color.fromARGB(255, 231, 231, 231),
+            color: Colors.white,
+            boxShadow: [
+              BoxShadow(
+                color: Colors.grey.withOpacity(0.3),
+                spreadRadius: 3,
+                blurRadius: 5,
+                offset: Offset(0, 3),
+              ),
+            ],
           ),
           child: Column(
             children: <Widget>[

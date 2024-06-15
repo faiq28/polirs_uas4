@@ -89,6 +89,21 @@ class LoginView extends GetView<LoginController> {
                       ),
                     );
                   }),
+                  const SizedBox(height: 12),
+                  Container(
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: [
+                        // Text('p'),
+                        TextButton(
+                            onPressed: () => Get.toNamed(Routes.REGISTER),
+                            child: const Text('Belum Punya Akun? Register',
+                                style: TextStyle(
+                                  color: Color.fromARGB(255, 109, 131, 255),
+                                ))),
+                      ],
+                    ),
+                  ),
                   const SizedBox(height: 50),
                   Obx(() {
                     return c.isLoading.value
@@ -142,13 +157,6 @@ class LoginView extends GetView<LoginController> {
                       ],
                     ),
                   ),
-                  TextButton(
-                      onPressed: () => Get.toNamed(Routes.REGISTER),
-                      child: const Text('Belum Punya Akun? Register',
-                          style: TextStyle(
-                            color: Color.fromARGB(255, 109, 131, 255),
-                          ))),
-                  const SizedBox(height: 10),
                 ],
               ),
             ),

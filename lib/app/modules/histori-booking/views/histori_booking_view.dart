@@ -48,10 +48,16 @@ class HistoriBookingView extends GetView<HistoriBookingController> {
                 child: Container(
                   padding: const EdgeInsets.all(20),
                   decoration: BoxDecoration(
-                    color: Colors.grey.shade200,
-                    borderRadius: const BorderRadius.only(
-                        topLeft: Radius.circular(30),
-                        bottomRight: Radius.circular(30)),
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(20),
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.grey.withOpacity(0.3),
+                        spreadRadius: 3,
+                        blurRadius: 5,
+                        offset: Offset(0, 3),
+                      ),
+                    ],
                   ),
                   child: Row(
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -78,6 +84,17 @@ class HistoriBookingView extends GetView<HistoriBookingController> {
                             style: const TextStyle(fontSize: 14),
                           ),
                           const SizedBox(height: 8),
+                          Row(
+                            children: [
+                              Text('Status: '),
+                              Text(' Success'),
+                              const Icon(
+                                Icons.check_circle_outline,
+                                size: 30,
+                                color: Colors.green,
+                              )
+                            ],
+                          ),
                         ],
                       ),
                       const SizedBox(height: 5),
@@ -91,11 +108,7 @@ class HistoriBookingView extends GetView<HistoriBookingController> {
                             ),
                           ),
                           const SizedBox(height: 15),
-                          const Icon(
-                            Icons.check_circle_outline,
-                            size: 30,
-                            color: Colors.green,
-                          )
+                          
                         ],
                       )
                     ],

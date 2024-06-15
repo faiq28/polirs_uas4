@@ -69,7 +69,10 @@ class ProfileView extends GetView<ProfileController> {
                   child: ListTile(
                     leading: Icon(Icons.phone,
                         color: Color.fromARGB(255, 109, 131, 255)),
-                    title: Text('0812 3456 7890'),
+                    title: Obx(() {
+                      final user = profileController.user.value;
+                      return Text(user?.phoneNumber ?? 'Anda belum mengisi nomor');
+                    }),
                   ),
                 ),
                 Divider(
@@ -94,7 +97,10 @@ class ProfileView extends GetView<ProfileController> {
                   child: ListTile(
                     leading: Icon(Icons.lock,
                         color: Color.fromARGB(255, 109, 131, 255)),
-                    title: Text('Password'),
+                    title: Text('Password anda bersifat privasi, Harap reset password jika anda lupa',style: TextStyle(
+                          fontSize: 14,
+                          color: Colors.red,
+                        )),
                   ),
                 ),
                 SizedBox(height: 20),
