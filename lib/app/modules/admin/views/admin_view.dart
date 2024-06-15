@@ -1,5 +1,6 @@
 import 'package:circular_menu/circular_menu.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_web_qrcode_scanner/flutter_web_qrcode_scanner.dart';
 import 'package:get/get.dart';
 import 'package:polirs_uas4/app/controllers/auth_controller.dart';
 import 'package:polirs_uas4/app/routes/app_pages.dart';
@@ -7,6 +8,7 @@ import 'package:polirs_uas4/app/routes/app_pages.dart';
 import '../controllers/admin_controller.dart';
 
 class AdminView extends GetView<AdminController> {
+  CameraController _controller = CameraController(autoPlay: false);
   AdminView({super.key});
 
   final c = Get.put(AuthController());
@@ -100,6 +102,31 @@ class AdminView extends GetView<AdminController> {
                 Get.toNamed(Routes.TAMBAH_POLI);
               },
             ),
+            //   Container(
+            //     child: Column(
+            //       children: [
+            //   FlutterWebQrcodeScanner(
+            //     cameraDirection: CameraDirection.back,
+            //     stopOnFirstResult: false,
+            //     controller: _controller,
+            //     onGetResult: (result) {
+            //       _controller.stopVideoStream();
+            //            print(result);
+            //           //  Get.toNamed(Routes.RUANG_LELANG, arguments: {"id_lelang": result});
+            //     },
+            //     width: 500,
+            //     height: 500,
+            //   ),
+            //   ElevatedButton(
+            //     onPressed: () {
+            //       // Ensure to start or resume the camera stream
+            //       _controller.startVideoStream();
+            //     },
+            //     child: Text('Start Scanning'),
+            //   ),
+            // ],
+            //     ),
+            //   ),
             _Card(
               icon: Icons.qr_code_scanner_outlined,
               title: 'QR',
@@ -107,7 +134,8 @@ class AdminView extends GetView<AdminController> {
               color: Color.fromARGB(255, 109, 131, 255),
               onTap: () {
                 print('SCAN QR TAPPED');
-                controller.openScanner();
+                // controller.openScanner();
+                Get.toNamed(Routes.SCAN);
               },
             ),
           ],

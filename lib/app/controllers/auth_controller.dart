@@ -6,6 +6,9 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:polirs_uas4/app/data/model/usermodel.dart';
 import 'package:polirs_uas4/app/routes/app_pages.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:google_sign_in/google_sign_in.dart';
+
 
 class AuthController extends GetxController {
   RxBool isLoading = false.obs;
@@ -14,9 +17,8 @@ class AuthController extends GetxController {
   CollectionReference userCollection =
       FirebaseFirestore.instance.collection('user');
 
-  bool _isAdmin = false; // Inisialisasi sebagai false
+  bool _isAdmin = false;
 
-  // Setter untuk isAdmin
   set isAdminFunc(bool value) {
     _isAdmin = value;
   }
@@ -26,11 +28,12 @@ class AuthController extends GetxController {
     return users.docs.any((e) => e['email'] == email);
   }
 
-  Future<void> register(
-      {required bool isAdmin,
-      required String userName,
-      required String email,
-      required String password}) async {
+  Future<void> register({
+    required bool isAdmin,
+    required String userName,
+    required String email,
+    required String password,
+  }) async {
     isLoading.value = true;
     try {
       if (await isDuplicateEmail(email)) {
@@ -63,7 +66,6 @@ class AuthController extends GetxController {
       await userCollection.doc(userModel.uid).set(userModel.toJson());
 
       Get.showSnackbar(const GetSnackBar(
-        // backgroundColor: Colors.white,
         title: 'Berhasil Register',
         message: 'Diarahkan Ke Halaman Login',
         duration: Duration(seconds: 2),
@@ -117,15 +119,23 @@ class AuthController extends GetxController {
 
         if (data != null) {
           final isAdmin = data['isAdmin'] ?? false;
+          final prefs = await SharedPreferences.getInstance();
+          await prefs.setBool('isLoggedIn', true);
+          await prefs.setBool('isAdmin', isAdmin);
+
+          Get.back(); // Dismiss the loading dialog
+
           if (isAdmin) {
             Get.offAllNamed(Routes.ADMIN);
           } else {
             Get.offAllNamed(Routes.HOME);
           }
         } else {
+          Get.back();
           print('Data pengguna kosong');
         }
       } else {
+        Get.back();
         print('Dokumen pengguna tidak ditemukan');
       }
     } on FirebaseAuthException catch (e) {
@@ -158,35 +168,67 @@ class AuthController extends GetxController {
 
   Future<void> logOut() async {
     await FirebaseAuth.instance.signOut();
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.remove('isLoggedIn');
+    await prefs.remove('isAdmin');
     Get.offAllNamed(Routes.LOGIN);
   }
 
-  String _determineHomeRoute(String uid) {
-    // Mendapatkan data pengguna dari Firestore
-    userCollection.doc(uid).get().then((userDoc) {
+  Future<String> _determineHomeRoute(String uid) async {
+    try {
+      final userDoc = await userCollection.doc(uid).get();
       if (userDoc.exists) {
         final data = userDoc.data() as Map<String, dynamic>;
-        if (data != null) {
-          final isAdmin = data['isAdmin'] ?? false;
-          if (isAdmin) {
-            return Routes.ADMIN;
-          } else {
-            return Routes.HOME;
-          }
-        }
+        final isAdmin = data['isAdmin'] ?? false;
+        return isAdmin ? Routes.ADMIN : Routes.HOME;
       }
-    }).catchError((error) {
+    } catch (error) {
       log('Error determining home route: $error');
-    });
+    }
     return Routes.LOGIN;
   }
 
-  String get autoLoginRoute {
+  Future<String> get autoLoginRoute async {
     final user = FirebaseAuth.instance.currentUser;
     if (user != null) {
-      return _determineHomeRoute(user.uid);
+      return await _determineHomeRoute(user.uid);
     } else {
-      return Routes.LOGIN;
+      final prefs = await SharedPreferences.getInstance();
+      final isLoggedIn = prefs.getBool('isLoggedIn') ?? false;
+      final isAdmin = prefs.getBool('isAdmin') ?? false;
+
+      if (isLoggedIn) {
+        return isAdmin ? Routes.ADMIN : Routes.HOME;
+      } else {
+        return Routes.LOGIN;
+      }
+    }
+  }
+
+  signInWithGoogle() async {
+    try {
+      final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
+      final GoogleSignInAuthentication? googleAuth =
+          await googleUser?.authentication;
+
+      final credential = GoogleAuthProvider.credential(
+        accessToken: googleAuth?.accessToken,
+        idToken: googleAuth?.idToken,
+      );
+      
+      await FirebaseAuth.instance.signInWithCredential(credential);
+      Get.offAllNamed(Routes.HOME);
+    } catch (e) {
+      try {
+        GoogleAuthProvider googleProvider = GoogleAuthProvider();
+        googleProvider
+            .addScope('https://www.googleapis.com/auth/contacts.readonly');
+        googleProvider.setCustomParameters({'login_hint': 'user@example.com'});
+        await FirebaseAuth.instance.signInWithPopup(googleProvider);
+        Get.offAllNamed(Routes.HOME);
+      } catch (e) {
+        Get.defaultDialog(middleText: "Gagal Login Google", title: "Error");
+      }
     }
   }
 }
